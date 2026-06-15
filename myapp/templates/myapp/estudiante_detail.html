@@ -1,0 +1,7 @@
+{% block title %}Detalle del Estudiante{% endblock %}
+
+{% block content %}
+<h1>{{ estudiante.nombre }} {{ estudiante.apellido }}</h1>
+<p>Email: {{ estudiante.email }}</p>
+<a href="{% url 'lista_estudiantes' %}">Volver a la lista</a>
+{% endblock %}

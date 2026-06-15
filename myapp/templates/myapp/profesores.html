@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Profesores{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Lista de Profesores</h1>
+    <div class="row">
+        {% for profesor in profesores %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        {{ profesor.apellido }} {{ profesor.nombre }}
+                    </h5>
+                    <p class="card-text mb-1">
+                        <strong>Email:</strong> {{ profesor.email }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Profesión:</strong> {{ profesor.profesion }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p class="text-muted text-center">no hay profes registrados</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

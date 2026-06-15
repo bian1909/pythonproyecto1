@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Estudiantes{% endblock %}
+
+{% block content %}
+<h1>Lista de Estudiantes</h1>
+<ul>
+    {% for estudiante in estudiantes %}
+        <li>{{ estudiante.nombre }} {{ estudiante.apellido }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
