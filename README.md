@@ -24,3 +24,14 @@ Este proyecto es una aplicación web desarrollada en **Django** como parte de la
    ```bash
    git clone [https://github.com/bian1909/pythonproyecto1.git](https://github.com/bian1909/pythonproyecto1.git)
    cd pythonproyecto1
+
+2. Crear y activar el entorno virtual:
+   python -m venv .venv
+# En Windows:
+.\.venv\Scripts\activate
+
+3. Instalar Django y levantar el servidor:
+pip install django
+python manage.py migrate
+python manage.py runserver
+
