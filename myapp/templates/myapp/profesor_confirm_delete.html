@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Profesor{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="card border-danger mx-auto p-4" style="max-width: 500px;">
+        <h2 class="text-danger mb-4">¿Seguro que querés eliminar a este profesor?</h2>
+        <p class="lead">Vas a borrar el registro de: <strong>{{ profesor.apellido }}, {{ profesor.nombre }}</strong>.</p>
+        
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'myapp:profesores' %}" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

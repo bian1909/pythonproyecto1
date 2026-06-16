@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Profesor{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Editar Profesor: {{ profesor.nombre }} {{ profesor.apellido }}</h2>
+    
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 600px;">
+        <form method="POST">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{% url 'myapp:profesores' %}" class="btn btn-secondary ms-2">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

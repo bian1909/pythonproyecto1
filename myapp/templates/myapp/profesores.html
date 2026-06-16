@@ -4,25 +4,32 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="text-center mb-4">Lista de Profesores</h1>
+    <h2 class="text-center mb-4">Dictado de Cursos - Profesores</h2>
+
+    <form method="get" action="{% url 'myapp:profesores' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Buscar por nombre, apellido o profesión..." value="{{ query|default_if_none:'' }}">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
     <div class="row">
         {% for profesor in profesores %}
-        <div class="col-md-4 col-sm-6 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">
-                        {{ profesor.apellido }} {{ profesor.nombre }}
-                    </h5>
-                    <p class="card-text mb-1">
-                        <strong>Email:</strong> {{ profesor.email }}
-                    </p>
-                    <p class="card-text">
-                        <strong>Profesión:</strong> {{ profesor.profesion }}
-                    </p>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ profesor.apellido }}, {{ profesor.nombre }}</h5>
+                        <p class="card-text"><strong>Email:</strong> {{ profesor.email }}</p>
+                        <p class="card-text"><strong>Profesión:</strong> {{ profesor.profesion }}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'myapp:profesorEditar' profesor.id %}" class="btn btn-warning btn-sm me-2">Editar</a>
+                        <a href="{% url 'myapp:profesorEliminar' profesor.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <p class="text-muted text-center">no hay profes registrados</p>
+        {% empty %}
+            <p class="text-center">No se encontraron profesores cargados.</p>
         {% endfor %}
     </div>
 </div>
